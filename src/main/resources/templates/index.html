@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet"/>
+</head>
+
+<body>
+    <h1 id="h1" class="fade-in">Hello World</h1>
+</body>
+
+<script>
+    setTimeout(function() {
+        document.getElementById('h1').classList.remove('fade-in');
+        document.getElementById('h1').classList.add('fade-out');
+    }, 7000);
+</script>
+
+</html>
+<!-- IE needs 512+ bytes: https://docs.microsoft.com/archive/blogs/ieinternals/friendly-http-error-pages -->

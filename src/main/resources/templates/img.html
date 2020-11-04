@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AllEmployees</title>
+    <link rel="stylesheet" href="image-style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h3>Upload Single File</h3>
+                <form id="singleUploadForm" name="singleUploadForm" th:action="@{/uploadImg}" method="POST" enctype="multipart/form-data">
+                    <input id="singleFileUploadInput" type="file" name="img" class="file-input" required />
+                    <button type="submit" class="primary submit-btn">Submit</button>
+                </form>
+        </div>
+
+        <div class="row">
+            <h3>Images uploaded</h3>
+            <div class="gallery" th:each="image : ${images}">
+                <img class="le" th:src="'data:image/png;base64,' + ${image.getImgBase64()}" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
