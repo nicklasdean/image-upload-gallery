@@ -3,22 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>AllEmployees</title>
-    <link rel="stylesheet" href="image-style.css">
+    <link rel="stylesheet" th:href="@{/img/image-style.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <h3>Upload Single File</h3>
-                <form id="singleUploadForm" name="singleUploadForm" th:action="@{/uploadImg}" method="POST" enctype="multipart/form-data">
-                    <input id="singleFileUploadInput" type="file" name="img" class="file-input" required />
-                    <button type="submit" class="primary submit-btn">Submit</button>
-                </form>
+            <div class="card">
+
+                <h5 class="card-header info-color white-text text-center py-4">
+                    <strong>Upload as BLOB or file</strong>
+                </h5>
+
+                <div class="card-body px-lg-5">
+                    <form id="singleUploadForm" name="singleUploadForm" th:action="@{/img/upload}" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="file">Image</label>
+                            <input type="file" class="form-control-file" name="file" id="file" required>
+                        </div>
+                        <div class="form-group">
+                            Blog or file on server
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="asBlob" id="asBlob" value="true" checked>
+                                <label class="form-check-label" for="asBlob">
+                                    Blob in database
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="asBlob" id="asFile" value="false">
+                                <label class="form-check-label" for="asFile">
+                                    File on server
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="primary submit-btn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div class="row">
-            <h3>Images uploaded</h3>
-            <div class="gallery" th:each="image : ${images}">
-                <img class="le" th:src="'data:image/png;base64,' + ${image.getImgBase64()}" />
+            <h3>Gallery</h3>
+        </div>
+            <div class="row">
+                <div class="gallery" th:each="image : ${images}">
+                    <img class="le" th:src="'data:image/jpeg;base64,' + ${image.getImgBase64()}" />
+                </div>
             </div>
         </div>
     </div>
