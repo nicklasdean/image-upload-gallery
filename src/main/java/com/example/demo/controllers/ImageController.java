@@ -25,7 +25,7 @@ public class ImageController {
         return "img";
     }
 
-    @PostMapping("/upload")
+        @PostMapping("/upload")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("asBlob") String asBlob, RedirectAttributes attributes){
         if(Boolean.parseBoolean(asBlob)){
             imageRepository.uploadImageToDatabase(file);
